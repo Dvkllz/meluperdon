@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Perdóname Melu</title>
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        text-align: center;
+    }
+    h1 {
+        font-size: 24px;
+        font-weight: bold;
+        color: #333; /* Color del texto */
+    }
+    button {
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        border: none;
+        border-radius: 5px;
+        margin: 10px;
+    }
+    #si-btn {
+        background-color: green;
+        color: white;
+    }
+    #no-btn {
+        background-color: red;
+        color: white;
+    }
+</style>
+</head>
+<body>
+    <h1>¿Me perdonas Melu?</h1>
+    <iframe src="https://giphy.com/embed/eKfpB6WZeKC1DiGrj8" width="480" height="303" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+    <p><a href="https://giphy.com/gifs/milk-and-mocha-bear-eKfpB6WZeKC1DiGrj8">via GIPHY</a></p>
+    <button id="si-btn" onclick="mostrarMensaje('Te amo mucho mi amorcito'); mostrarGIFSi()">Sí</button>
+    <button id="no-btn" onclick="respuestaIncorrecta()">No</button>
+    <p id="mensaje"></p>
+
+    <script>
+        let intentos = 0;
+
+        function mostrarMensaje(mensaje) {
+            document.getElementById("mensaje").innerText = mensaje;
+        }
+
+        function respuestaIncorrecta() {
+            intentos++;
+            if (intentos === 1) {
+                document.getElementById("no-btn").style.width = "90px";
+                document.getElementById("mensaje").innerText = "¿Segura?";
+            } else if (intentos === 2) {
+                document.getElementById("no-btn").style.width = "70px";
+                document.getElementById("mensaje").innerText = "¿Segurísima?";
+            } else if (intentos === 3) {
+                document.getElementById("mensaje").innerText = "Respuesta incorrecta miamor";
+                document.getElementById("no-btn").style.display = "none";
+            }
+        }
+
+        function mostrarGIFSi() {
+            // Crear un elemento iframe para mostrar el segundo GIF
+            let gifElement = document.createElement("iframe");
+            gifElement.src = "https://giphy.com/embed/IzXiddo2twMmdmU8Lv";
+            gifElement.width = "480";
+            gifElement.height = "391";
+            gifElement.frameBorder = "0";
+            gifElement.className = "giphy-embed";
+            gifElement.allowFullScreen = true;
+
+            // Crear un elemento de párrafo para el enlace al segundo GIF
+            let linkElement = document.createElement("p");
+            let link = document.createElement("a");
+            link.href = "https://giphy.com/gifs/milk-and-mocha-bear-IzXiddo2twMmdmU8Lv";
+            link.innerText = "via GIPHY";
+            link.target = "_blank";
+            link.rel = "noopener noreferrer";
+            linkElement.appendChild(link);
+
+            // Insertar el segundo GIF y el enlace en el DOM
+            document.body.appendChild(gifElement);
+            document.body.appendChild(linkElement);
+        }
+    </script>
+</body>
+</html>
